@@ -1,0 +1,13 @@
+language: python
+python:
+  - "2.7"
+install:
+  - pip install ansible
+before_script:
+  - pushd ../
+  - git clone https://github.com/willthames/ansible-lint.git
+  - export PYTHONPATH=$PYTHONPATH:`pwd`/ansible-lint/lib
+  - export PATH=$PATH:`pwd`/ansible-lint/bin
+script:
+  - popd
+  - ansible-lint electrumx/site.yml
