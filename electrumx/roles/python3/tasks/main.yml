@@ -1,0 +1,12 @@
+---
+- name: yum repo ius-release
+  yum: name="{{ item }}" state=present
+  with_items:
+    - "https://centos7.iuscommunity.org/ius-release.rpm"
+- name: yum install python3
+  yum: name="{{ item }}" state=present
+  with_items:
+    - python36u
+    - python36u-libs
+    - python36u-devel
+    - python36u-pip

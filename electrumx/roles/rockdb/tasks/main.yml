@@ -1,0 +1,7 @@
+---
+- name: git clone
+  git: repo=https://github.com/facebook/rocksdb.git dest=/tmp/rocksdb version=v4.5.1
+- name: make
+  command: make shared_lib chdir=/tmp/rocksdb
+- name: make install
+  command: make install-shared INSTALL_PATH=/usr chdir=/tmp/rocksdb
