@@ -1,5 +1,5 @@
 ---
-- hosts: app
+- hosts: all
   sudo: yes
   roles:
     - python3
@@ -13,3 +13,8 @@
     - coind_user: "litecoin"
     - coind_password: "litecoin123"
     - database_dir: ""
+    - tcp_port: "4444"
+    - ssh_port: "4445"
+    - ssh_certfile: "/etc/electrumx/server.crt"
+    - ssh_keyfile: "/etc/electrumx/server.key"
+    - max_send: "50000000"

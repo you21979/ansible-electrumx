@@ -3,9 +3,10 @@ NET = mainnet
 DB_DIRECTORY = {{ database_dir }}/db
 DAEMON_URL = http://{{ coind_user }}:{{ coind_password }}@{{ coind_host }}:{{ coind_port }}/
 DB_ENGINE = rocksdb
-TCP_PORT = 4444
+TCP_PORT = {{ tcp_port }}
+SSL_PORT = {{ ssh_port }}
 HOST = 0.0.0.0
-MAX_SEND = 50000000
+MAX_SEND = {{ max_send }}
 
 #SSL_CERTFILE=/etc/electrumx/server.crt
 #SSL_KEYFILE=/etc/electrumx/server.key
