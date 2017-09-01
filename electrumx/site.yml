@@ -1,0 +1,45 @@
+---
+- hosts: app
+  sudo: true
+  tasks:
+    - name: yum add repo
+      yum: name="{{ item }}" state=present
+      with_items:
+        - "epel-release"
+        - "https://centos7.iuscommunity.org/ius-release.rpm"
+    - name: yum group install
+      yum: name="{{ item }}" state=present
+      with_items:
+        - "@Development Tools"
+    - name: yum install
+      yum: name="{{ item }}" state=present
+      with_items:
+        - snappy
+        - snappy-devel
+        - zlib
+        - zlib-devel
+        - bzip2-libs
+        - bzip2-devel
+        - gflags-devel
+        - cmake
+        - make
+    - name: yum install python3
+      yum: name="{{ item }}" state=present
+      with_items:
+        - python36u
+        - python36u-libs
+        - python36u-devel
+        - python36u-pip
+    - git: repo=https://github.com/facebook/rocksdb.git
+           dest=/tmp/rocksdb version=v4.5.1
+    - name: make
+      command: make shared_lib chdir=/tmp/rocksdb
+    - name: make install
+      command: make install-shared INSTALL_PATH=/usr chdir=/tmp/rocksdb
+    - name: download
+      get_url: url=https://codeload.github.com/kyuupichan/electrumx/tar.gz/1.0.17 dest=/tmp mode=0440
+    - name: extract
+      command: tar zxvf electrumx-1.0.17.tar.gz chdir=/tmp
+
+
+
