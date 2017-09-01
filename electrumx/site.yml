@@ -47,6 +47,6 @@
       command: tar zxvf electrumx-1.0.17.tar.gz chdir=/tmp
     - name: setup
       command: /usr/bin/python3.6 ./setup.py install chdir=/tmp/electrumx-1.0.17
-
-
+    - name: copy
+      command: cp /tmp/electrumx-1.0.17/contrib/systemd/electrumx.service /etc/systemd/system/electrumx.service
 
