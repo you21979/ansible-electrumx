@@ -5,16 +5,11 @@
     - python3
     - devel
     - rockdb
-  tasks:
-    - name: download
-      get_url: url=https://codeload.github.com/kyuupichan/electrumx/tar.gz/1.0.17 dest=/tmp mode=0440
-    - name: extract
-      command: tar zxvf electrumx-1.0.17.tar.gz chdir=/tmp
-    - name: setup
-      command: /usr/bin/python3.6 ./setup.py install chdir=/tmp/electrumx-1.0.17
-    - name: copy
-      command: cp /tmp/electrumx-1.0.17/contrib/systemd/electrumx.service /etc/systemd/system/electrumx.service
-
-#    - name: template
-#      template: src="templates/electrum/nginx.conf" dest="/etc/nginx/nginx.conf" owner=nginx group=nginx
-
+    - electrumx
+  vars:
+    - coin_name: "Litecoin"
+    - coind_host: "localhost"
+    - coind_port: "9332"
+    - coind_user: "litecoin"
+    - coind_password: "litecoin123"
+    - database_dir: ""

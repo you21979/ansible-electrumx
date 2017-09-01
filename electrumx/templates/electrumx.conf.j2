@@ -1,0 +1,11 @@
+COIN = {{ coin_name }}
+NET = mainnet
+DB_DIRECTORY = {{ database_dir }}/db
+DAEMON_URL = http://{{ coind_user }}:{{ coind_password }}@{{ coind_host }}:{{ coind_port }}/
+DB_ENGINE = rocksdb
+TCP_PORT = 4444
+HOST = 0.0.0.0
+MAX_SEND = 50000000
+
+#SSL_CERTFILE=/etc/electrumx/server.crt
+#SSL_KEYFILE=/etc/electrumx/server.key
