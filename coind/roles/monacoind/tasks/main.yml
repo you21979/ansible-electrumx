@@ -1,0 +1,13 @@
+---
+- name: download
+  get_url: url=https://codeload.github.com/monacoinproject/monacoin/tar.gz/monacoin-0.14.2 dest=/tmp mode=0440
+- name: extract
+  unarchive: src=/tmp/monacoin-monacoin-0.14.2.tar.gz dest=/tmp copy=no
+- name: autogen
+  command: ./autogen.sh chdir=/tmp/monacoin-monacoin-0.14.2
+- name: configure
+  command: ./configure --disable-wallet chdir=/tmp/monacoin-monacoin-0.14.2
+- name: make
+  command: make chdir=/tmp/monacoin-monacoin-0.14.2
+- name: make install
+  command: make install chdir=/tmp/monacoin-monacoin-0.14.2

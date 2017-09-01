@@ -1,0 +1,14 @@
+---
+- name: yum group install
+  yum: name="{{ item }}" state=present
+  with_items:
+    - "@Development Tools"
+- name: yum install
+  yum: name="{{ item }}" state=present
+  with_items:
+    - boost
+    - boost-devel
+    - openssl-devel
+    - libevent-devel
+    - libdb-cxx
+    - libdb-cxx-devel
