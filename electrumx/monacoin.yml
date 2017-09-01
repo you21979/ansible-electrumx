@@ -1,0 +1,15 @@
+---
+- hosts: app
+  sudo: yes
+  roles:
+    - python3
+    - devel
+    - rockdb
+    - electrumx
+  vars:
+    - coin_name: "Monacoin"
+    - coind_host: "localhost"
+    - coind_port: "8332"
+    - coind_user: "monacoin"
+    - coind_password: "monacoin123"
+    - database_dir: "/home/centos/DB"
