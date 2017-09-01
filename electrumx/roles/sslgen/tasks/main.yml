@@ -1,0 +1,9 @@
+---
+- name: gen key
+  script: script.sh
+- name: create directory
+  file: path=/etc/electrumx state=directory owner=root group=root mode=0755
+- name: copy key
+  command: cp /tmp/cert.key /etc/electrumx/server.key
+- name: copy crt
+  command: cp /tmp/cert.pem /etc/electrumx/server.crt 

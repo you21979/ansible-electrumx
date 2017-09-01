@@ -6,6 +6,7 @@
     - devel
     - rockdb
     - electrumx
+    - sslgen
   vars:
     - coin_name: "Litecoin"
     - coind_host: "localhost"
@@ -15,6 +16,4 @@
     - database_dir: ""
     - tcp_port: "4444"
     - ssh_port: "4445"
-    - ssh_certfile: "/etc/electrumx/server.crt"
-    - ssh_keyfile: "/etc/electrumx/server.key"
     - max_send: "50000000"
