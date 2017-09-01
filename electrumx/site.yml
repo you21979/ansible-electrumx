@@ -20,9 +20,14 @@
         - zlib-devel
         - bzip2-libs
         - bzip2-devel
-        - gflags-devel
         - cmake
         - make
+    - name: yum install
+      yum: name="{{ item }}" state=present
+      with_items:
+        - leveldb
+        - leveldb-devel
+        - gflags-devel
     - name: yum install python3
       yum: name="{{ item }}" state=present
       with_items:
@@ -40,6 +45,8 @@
       get_url: url=https://codeload.github.com/kyuupichan/electrumx/tar.gz/1.0.17 dest=/tmp mode=0440
     - name: extract
       command: tar zxvf electrumx-1.0.17.tar.gz chdir=/tmp
+    - name: setup
+      command: /usr/bin/python3.6 ./setup.py install chdir=/tmp/electrumx-1.0.17
 
 
 
