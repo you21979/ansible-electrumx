@@ -6,7 +6,7 @@
 - name: autogen
   command: ./autogen.sh chdir=/tmp/bitcoin-abc-{{coind_version}}
 - name: configure
-  command: ./configure --disable-wallet chdir=/tmp/bitcoin-abc-{{coind_version}}
+  command: ./configure --disable-wallet --program-transform-name=s/bitcoin/bitcoincash/g chdir=/tmp/bitcoin-abc-{{coind_version}}
 - name: make
   command: make chdir=/tmp/bitcoin-abc-{{coind_version}}
 - name: make install
