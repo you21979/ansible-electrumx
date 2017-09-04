@@ -8,7 +8,7 @@
 - name: configure
   command: ./configure --disable-wallet chdir=/tmp/dogecoin-{{coind_version}}
 - name: make
-  command: make chdir=/tmp/dogecoin-{{coind_version}}
+  command: make -j {{makejob}} chdir=/tmp/dogecoin-{{coind_version}}
 - name: make install
   command: make install chdir=/tmp/dogecoin-{{coind_version}}
 - name: systemd template setup

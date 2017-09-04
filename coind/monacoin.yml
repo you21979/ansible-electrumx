@@ -5,6 +5,7 @@
     - coin_name: monacoin
     - coin_rpcport: 9402
     - coind_version: 0.14.2
+    - makejob: "{{ansible_processor_count}}"
   roles:
     - devel
     - monacoind

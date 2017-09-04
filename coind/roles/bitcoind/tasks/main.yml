@@ -8,7 +8,7 @@
 - name: configure
   command: ./configure --disable-wallet chdir=/tmp/bitcoin-{{coind_version}}
 - name: make
-  command: make chdir=/tmp/bitcoin-{{coind_version}}
+  command: make -j {{makejob}} chdir=/tmp/bitcoin-{{coind_version}}
 - name: make install
   command: make install chdir=/tmp/bitcoin-{{coind_version}}
 - name: systemd template setup

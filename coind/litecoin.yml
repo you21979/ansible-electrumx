@@ -5,6 +5,7 @@
     - coin_name: litecoin
     - coin_rpcport: 9332
     - coind_version: 0.14.2
+    - makejob: "{{ansible_processor_count}}"
   roles:
     - devel
     - litecoind

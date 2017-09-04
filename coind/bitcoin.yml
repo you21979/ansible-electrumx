@@ -5,6 +5,7 @@
     - coin_name: bitcoin
     - coin_rpcport: 8332
     - coind_version: 0.14.2
+    - makejob: "{{ansible_processor_count}}"
   roles:
     - devel
     - bitcoind

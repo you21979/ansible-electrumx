@@ -5,6 +5,7 @@
     - coin_name: bitcoincash
     - coin_rpcport: 7332
     - coind_version: 0.14.6
+    - makejob: "{{ansible_processor_count}}"
   roles:
     - devel
     - bitcoin-abc

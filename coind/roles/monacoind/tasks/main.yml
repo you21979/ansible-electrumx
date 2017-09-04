@@ -8,7 +8,7 @@
 - name: configure
   command: ./configure --disable-wallet chdir=/tmp/monacoin-monacoin-{{coind_version}}
 - name: make
-  command: make chdir=/tmp/monacoin-monacoin-{{coind_version}}
+  command: make -j {{makejob}} chdir=/tmp/monacoin-monacoin-{{coind_version}}
 - name: make install
   command: make install chdir=/tmp/monacoin-monacoin-{{coind_version}}
 - name: systemd template setup
