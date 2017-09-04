@@ -11,3 +11,5 @@
   command: make chdir=/tmp/litecoin-{{coind_version}}
 - name: make install
   command: make install chdir=/tmp/litecoin-{{coind_version}}
+- name: systemd template setup
+  template: src="templates/coind.service.j2" dest="/etc/systemd/system/{{ coin_name }}.service" owner=root group=root
