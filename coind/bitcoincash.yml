@@ -3,6 +3,7 @@
   sudo: yes
   vars:
     - coin_name: bitcoincash
+    - coin_rpcport: 7332
     - coind_version: 0.14.6
   roles:
     - devel

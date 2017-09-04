@@ -3,6 +3,7 @@
   sudo: yes
   vars:
     - coin_name: litecoin
+    - coin_rpcport: 9332
     - coind_version: 0.14.2
   roles:
     - devel

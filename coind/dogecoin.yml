@@ -3,6 +3,7 @@
   sudo: yes
   vars:
     - coin_name: dogecoin
+    - coin_rpcport: 5449
     - coind_version: 1.10.0
   roles:
     - devel

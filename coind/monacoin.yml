@@ -3,6 +3,7 @@
   sudo: yes
   vars:
     - coin_name: monacoin
+    - coin_rpcport: 9402
     - coind_version: 0.14.2
   roles:
     - devel

@@ -1,11 +1,11 @@
 ---
 - name: download
-  get_url: url=https://codeload.github.com/kyuupichan/electrumx/tar.gz/1.0.17 dest=/tmp mode=0440
+  get_url: url=https://codeload.github.com/kyuupichan/electrumx/tar.gz/{{ electrumx_version }} dest=/tmp mode=0440
 - name: extract
-  unarchive: src=/tmp/electrumx-1.0.17.tar.gz dest=/tmp copy=no
+  unarchive: src=/tmp/electrumx-{{ electrumx_version }}.tar.gz dest=/tmp copy=no
 - name: install
-  command: /usr/bin/python3.6 ./setup.py install chdir=/tmp/electrumx-1.0.17
-- name: systemd config copy
-  command: cp /tmp/electrumx-1.0.17/contrib/systemd/electrumx.service /etc/systemd/system/electrumx.service
-- name: electrum template setup
+  command: /usr/bin/python3.6 ./setup.py install chdir=/tmp/electrumx-{{ electrumx_version }}
+- name: electrumx systemd setup
+  template: src="templates/electrumx.service.j2" dest="/etc/systemd/system/electrumx.service" owner=root group=root
+- name: electrumx template setup
   template: src="templates/electrumx.conf.j2" dest="/etc/electrumx.conf" owner=root group=root

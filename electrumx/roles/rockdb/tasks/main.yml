@@ -5,3 +5,5 @@
   command: make shared_lib chdir=/tmp/rocksdb
 - name: make install
   command: make install-shared INSTALL_PATH=/usr chdir=/tmp/rocksdb
+- name: pip install
+  command: pip3.6 install pyrocksdb

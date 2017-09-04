@@ -1,15 +1,25 @@
 ---
-- hosts: app
+- hosts: all
   sudo: yes
   roles:
     - python3
     - devel
     - rockdb
     - electrumx
+    - sslgen
   vars:
-    - coin_name: "Monacoin"
-    - coind_host: "localhost"
-    - coind_port: "8332"
-    - coind_user: "monacoin"
-    - coind_password: "monacoin123"
-    - database_dir: "/home/centos/DB"
+    - electrumx_version: 1.0.17
+    - coin_name: Monacoin
+    - coind_host: localhost
+    - coind_port: 9402
+    - coind_user: monacoin
+    - coind_password: monacoin123
+    - exec_user: centos
+    - database_dir: /home/centos/DB
+    - tcp_port: 4444
+    - ssh_port: 4445
+    - max_send: 50000000
+  tasks:
+    - name: create database dir
+      file: path={{ database_dir }} state=directory owner={{ exec_user }} group={{ exec_user }} mode=0755
+      
