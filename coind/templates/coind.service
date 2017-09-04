@@ -1,0 +1,15 @@
+[Unit]
+Description={{coin_name}}
+After=syslog.target network.target
+
+[Service]
+Type=simple
+ExecStart=/usr/local/bin/{{coin_name}}d -server -txindex=1 -rpcuser={{coin_name}} -rpcpassword={{coin_name}}123
+WorkingDirectory=/home/centos
+KillMode=process
+Restart=always
+User=centos
+Group=centos
+
+[Install]
+WantedBy=multi-user.target
