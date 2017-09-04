@@ -1,0 +1,3 @@
+---
+- name: coin version
+  version: 14.2

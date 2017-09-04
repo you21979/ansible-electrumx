@@ -1,0 +1,13 @@
+---
+- name: download
+  get_url: url=https://codeload.github.com/litecoin-project/litecoin/tar.gz/v{{coind_version}} dest=/tmp mode=0440
+- name: extract
+  unarchive: src=/tmp/litecoin-{{coind_version}}.tar.gz dest=/tmp copy=no
+- name: autogen
+  command: ./autogen.sh chdir=/tmp/litecoin-{{coind_version}}
+- name: configure
+  command: ./configure --disable-wallet chdir=/tmp/litecoin-{{coind_version}}
+- name: make
+  command: make chdir=/tmp/litecoin-{{coind_version}}
+- name: make install
+  command: make install chdir=/tmp/litecoin-{{coind_version}}

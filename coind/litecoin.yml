@@ -1,0 +1,9 @@
+---
+- hosts: all
+  sudo: yes
+  vars:
+    - coind_version: 0.14.2
+  roles:
+    - devel
+    - litecoind
+
