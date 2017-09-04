@@ -1,0 +1,13 @@
+---
+- name: download
+  get_url: url=https://codeload.github.com/dogecoin/dogecoin/tar.gz/v{{coind_version}} dest=/tmp mode=0440
+- name: extract
+  unarchive: src=/tmp/dogecoin-{{coind_version}}.tar.gz dest=/tmp copy=no
+- name: autogen
+  command: ./autogen.sh chdir=/tmp/dogecoin-{{coind_version}}
+- name: configure
+  command: ./configure --disable-wallet chdir=/tmp/dogecoin-{{coind_version}}
+- name: make
+  command: make chdir=/tmp/dogecoin-{{coind_version}}
+- name: make install
+  command: make install chdir=/tmp/dogecoin-{{coind_version}}
