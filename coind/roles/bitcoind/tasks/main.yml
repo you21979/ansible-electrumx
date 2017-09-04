@@ -1,0 +1,13 @@
+---
+- name: download
+  get_url: url=https://codeload.github.com/bitcoin/bitcoin/tar.gz/v{{coind_version}} dest=/tmp mode=0440
+- name: extract
+  unarchive: src=/tmp/bitcoin-{{coind_version}}.tar.gz dest=/tmp copy=no
+- name: autogen
+  command: ./autogen.sh chdir=/tmp/bitcoin-{{coind_version}}
+- name: configure
+  command: ./configure --disable-wallet chdir=/tmp/bitcoin-{{coind_version}}
+- name: make
+  command: make chdir=/tmp/bitcoin-{{coind_version}}
+- name: make install
+  command: make install chdir=/tmp/bitcoin-{{coind_version}}

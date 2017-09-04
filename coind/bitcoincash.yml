@@ -2,8 +2,8 @@
 - hosts: all
   sudo: yes
   vars:
-    - coind_version: 0.14.2
+    - coind_version: 0.14.6
   roles:
     - devel
-    - monacoind
+    - bitcoin-abc
 

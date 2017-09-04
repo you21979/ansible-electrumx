@@ -1,0 +1,13 @@
+---
+- name: download
+  get_url: url=https://codeload.github.com/Bitcoin-ABC/bitcoin-abc/tar.gz/v{{coind_version}} dest=/tmp mode=0440
+- name: extract
+  unarchive: src=/tmp/bitcoin-abc-{{coind_version}}.tar.gz dest=/tmp copy=no
+- name: autogen
+  command: ./autogen.sh chdir=/tmp/bitcoin-abc-{{coind_version}}
+- name: configure
+  command: ./configure --disable-wallet chdir=/tmp/bitcoin-abc-{{coind_version}}
+- name: make
+  command: make chdir=/tmp/bitcoin-abc-{{coind_version}}
+- name: make install
+  command: make install chdir=/tmp/bitcoin-abc-{{coind_version}}
