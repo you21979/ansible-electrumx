@@ -6,6 +6,7 @@
 - name: make install
   command: make install-shared INSTALL_PATH=/usr chdir=/tmp/rocksdb
 - name: pip install
-  command: pip3.6 install pyrocksdb
+  pip: name={{ item }} executable=pip3.6
+  with_items: pyrocksdb
 - name: ldconfig
   command: /usr/sbin/ldconfig
