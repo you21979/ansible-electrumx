@@ -1,5 +1,7 @@
 ---
-- hosts: all
+- hosts: test
+  connection: docker
+  remote_user: root
   sudo: yes
   roles:
     - python3
@@ -9,13 +11,13 @@
     - sslgen
   vars:
     - electrumx_version: 1.0.17
-    - coin_name: Litecoin
+    - coin_name: Monacoin
     - coind_host: localhost
-    - coind_port: 9332
-    - coind_user: litecoin
-    - coind_password: litecoin123
-    - exec_user: centos
-    - database_dir: /home/centos/DB
+    - coind_port: 9402
+    - coind_user: monacoin
+    - coind_password: monacoin123
+    - exec_user: root
+    - database_dir: /var/lib/electrumx_db
     - tcp_port: 4444
     - ssh_port: 4445
     - max_send: 50000000
