@@ -1,5 +1,7 @@
 # ansible-electrumx
 
+[![Build Status](https://secure.travis-ci.org/you21979/ansible-electrumx.png?branch=master)](https://travis-ci.org/you21979/ansible-electrumx)
+
 electrumx setup for centos7
 
 
