@@ -26,6 +26,8 @@ ansible-playbook -i ./hosts ./coind/bitcoin.yml -u centos --private-key=privatek
 ### local install
 
 ```
+yum install -y epel-release
+yum install -y git ansible
 echo "[all]" > ./hosts
 echo "localhost" >> ./hosts
 ansible-playbook --connection=local -i ./hosts ./coind/bitcoin.yml 
@@ -44,6 +46,8 @@ ansible-playbook -i ./hosts ./electrumx/bitcoin.yml -u centos --private-key=priv
 ### local install
 
 ```
+yum install -y epel-release
+yum install -y git ansible
 echo "[all]" > ./hosts
 echo "localhost" >> ./hosts
 ansible-playbook --connection=local -i ./hosts ./electrumx/bitcoin.yml 
