@@ -11,7 +11,7 @@
     - electrumx_version: 1.0.17
     - coin_name: Bitcoin
     - coind_host: localhost
-    - coind_port: 9332
+    - coind_port: 8332
     - coind_user: bitcoin
     - coind_password: bitcoin123
     - exec_user: centos
