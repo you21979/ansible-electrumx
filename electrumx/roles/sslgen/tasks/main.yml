@@ -1,4 +1,8 @@
 ---
+- name: yum install 
+  yum: name="{{ item }}" state=present
+  with_items:
+    - openssl
 - name: gen key
   script: script.sh
 - name: create directory
