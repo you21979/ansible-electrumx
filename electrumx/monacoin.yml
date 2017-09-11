@@ -10,6 +10,7 @@
   vars:
     - electrumx_version: 1.0.17
     - coin_name: Monacoin
+    - coin_network: mainnet
     - coind_host: localhost
     - coind_port: 9402
     - coind_user: monacoin

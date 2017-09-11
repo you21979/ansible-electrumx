@@ -10,6 +10,7 @@
   vars:
     - electrumx_version: 1.0.17
     - coin_name: Litecoin
+    - coin_network: mainnet
     - coind_host: localhost
     - coind_port: 9332
     - coind_user: litecoin

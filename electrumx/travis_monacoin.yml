@@ -10,8 +10,9 @@
     - electrumx
     - sslgen
   vars:
-    - electrumx_version: 1.0.17
+    - electrumx_version: 1.1
     - coin_name: Monacoin
+    - coin_network: mainnet
     - coind_host: localhost
     - coind_port: 9402
     - coind_user: monacoin

@@ -9,7 +9,8 @@
     - sslgen
   vars:
     - electrumx_version: 1.0.17
-    - coin_name: Bitcoin
+    - coin_name: BitcoinCash
+    - coin_network: mainnet
     - coind_host: localhost
     - coind_port: 7332
     - coind_user: bitcoincash
