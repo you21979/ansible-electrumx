@@ -1,6 +1,8 @@
 ---
 - name: git clone
-  git: repo=https://github.com/facebook/rocksdb.git dest=/tmp/rocksdb version=v5.8
+  git: repo=https://github.com/facebook/rocksdb.git dest=/tmp/rocksdb version=v5.3.6
+- name: make clean
+  command: make clean chdir=/tmp/rocksdb
 - name: make
   command: make -j {{ makejob }} shared_lib chdir=/tmp/rocksdb
 - name: make install
