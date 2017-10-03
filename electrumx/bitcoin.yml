@@ -17,8 +17,8 @@
     - coind_password: bitcoin123
     - exec_user: centos
     - database_dir: /home/centos/DB
-    - tcp_port: 4444
-    - ssh_port: 4445
+    - tcp_port: 50001
+    - ssh_port: 50002
     - max_send: 50000000
     - makejob: "{{ansible_processor_count}}"
   tasks:
