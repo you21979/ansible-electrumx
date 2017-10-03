@@ -6,11 +6,11 @@
   roles:
     - python3
     - devel
-    - rockdb
+    - rockdb5
     - electrumx
     - sslgen
   vars:
-    - electrumx_version: 1.1
+    - electrumx_version: 1.1.1
     - coin_name: Monacoin
     - coin_network: mainnet
     - coind_host: localhost

@@ -4,7 +4,7 @@
   roles:
     - python3
     - devel
-    - rockdb
+    - rockdb5
     - electrumx
     - sslgen
   vars:
