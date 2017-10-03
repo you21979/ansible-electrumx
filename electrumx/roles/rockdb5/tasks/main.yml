@@ -1,0 +1,12 @@
+---
+- name: git clone
+  git: repo=https://github.com/facebook/rocksdb.git dest=/tmp/rocksdb version=v5.8
+- name: make
+  command: make -j {{ makejob }} shared_lib chdir=/tmp/rocksdb
+- name: make install
+  command: make install-shared INSTALL_PATH=/usr chdir=/tmp/rocksdb
+- name: pip install
+  pip: name={{ item }} executable=pip3.6
+  with_items: python-rocksdb
+- name: ldconfig
+  command: /usr/sbin/ldconfig
