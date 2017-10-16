@@ -19,3 +19,7 @@
   template: src="templates/electrumx.service.j2" dest="/etc/systemd/system/electrumx.service" owner=root group=root
 - name: electrumx template setup
   template: src="templates/electrumx.conf.j2" dest="/etc/electrumx.conf" owner=root group=root
+- name: electrumx copy script
+  command: cp compact_history.py /usr/local/bin chdir=/tmp/electrumx-{{ electrumx_version }}
+- name: electrumx autocompact script
+  template: src="templates/electrumx_autocompact.sh.j2" dest="/usr/local/bin/electrumx_autocompact.sh" owner=root group=root mode=0755

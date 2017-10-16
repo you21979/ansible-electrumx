@@ -8,7 +8,7 @@
     - electrumx
     - sslgen
   vars:
-    - electrumx_version: 1.1.1
+    - electrumx_version: 1.2
     - coin_name: BitcoinCash
     - coin_network: mainnet
     - coind_host: localhost

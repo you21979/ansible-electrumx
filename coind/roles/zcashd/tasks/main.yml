@@ -31,12 +31,14 @@
   command: make CURVE=ALT_BN128 NO_SUPERCOP=1 lib chdir=/tmp/libsnark
 - name: libsnark make install
   command: make CURVE=ALT_BN128 NO_SUPERCOP=1 install PREFIX=/usr chdir=/tmp/libsnark
+- name: download
+  get_url: url=https://codeload.github.com/zcash/zcash/tar.gz/v{{coind_version}} dest=/tmp mode=0440
 - name: extract
   unarchive: src=/tmp/zcash-{{coind_version}}.tar.gz dest=/tmp copy=no
 - name: autogen
   command: ./autogen.sh chdir=/tmp/zcash-{{coind_version}}
 - name: configure
-  command: ./configure --disable-wallet CPPFLAGS=-I/usr/include/libsnark --disable-rust chdir=/tmp/zcash-{{coind_version}}
+  command: ./configure --disable-wallet --disable-rust CPPFLAGS=-I/usr/include/libsnark chdir=/tmp/zcash-{{coind_version}}
 - name: make
   command: make -j {{makejob}} chdir=/tmp/zcash-{{coind_version}}
 - name: make install

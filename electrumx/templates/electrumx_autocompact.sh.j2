@@ -1,0 +1,5 @@
+#!/bin/bash
+systemctl stop electrumx
+sleep 5
+sudo -u centos DB_DIRECTORY={{ database_dir }} COIN={{ coin_name }} DB_ENGINE=rocksdb /usr/bin/python3.6 /usr/local/bin/compact_history.py
+systemctl start electrumx
