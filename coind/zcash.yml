@@ -1,0 +1,12 @@
+---
+- hosts: all
+  sudo: yes
+  vars:
+    - coin_name: zcash
+    - coin_rpcport: 8232
+    - coind_version: 1.0.12
+    - makejob: "{{ansible_processor_count}}"
+  roles:
+    - devel
+    - zcashd
+

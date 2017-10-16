@@ -1,0 +1,45 @@
+---
+- name: yum add repo
+  yum: name=epel-release state=present
+- name: yum install
+  yum: name="{{ item }}" state=present
+  with_items:
+    - gcc-c++
+    - make
+    - git
+    - gmp-devel
+    - gmock
+    - gmock-devel
+    - procps-ng-devel
+    - gtest-devel
+    - python-markdown
+- name: libsodium download
+  get_url: url=https://codeload.github.com/jedisct1/libsodium/tar.gz/1.0.15 dest=/tmp mode=0440
+- name: libsodium extract
+  unarchive: src=/tmp/libsodium-1.0.15.tar.gz dest=/tmp copy=no
+- name: libsodium autogen
+  command: ./autogen.sh chdir=/tmp/libsodium-1.0.15
+- name: libsodium configure
+  command: ./configure chdir=/tmp/libsodium-1.0.15
+- name: libsodium make
+  command: make -j {{makejob}} chdir=/tmp/libsodium-1.0.15
+- name: libsodium make install
+  command: make install chdir=/tmp/libsodium-1.0.15
+- name: libsnark download
+  git: repo=https://github.com/zcash/libsnark.git dest=/tmp/libsnark
+- name: libsnark make
+  command: make CURVE=ALT_BN128 NO_SUPERCOP=1 lib chdir=/tmp/libsnark
+- name: libsnark make install
+  command: make CURVE=ALT_BN128 NO_SUPERCOP=1 install PREFIX=/usr chdir=/tmp/libsnark
+- name: extract
+  unarchive: src=/tmp/zcash-{{coind_version}}.tar.gz dest=/tmp copy=no
+- name: autogen
+  command: ./autogen.sh chdir=/tmp/zcash-{{coind_version}}
+- name: configure
+  command: ./configure --disable-wallet CPPFLAGS=-I/usr/include/libsnark --disable-rust chdir=/tmp/zcash-{{coind_version}}
+- name: make
+  command: make -j {{makejob}} chdir=/tmp/zcash-{{coind_version}}
+- name: make install
+  command: make install chdir=/tmp/zcash-{{coind_version}}
+- name: systemd template setup
+  template: src="templates/coind.service.j2" dest="/etc/systemd/system/{{ coin_name }}.service" owner=root group=root
