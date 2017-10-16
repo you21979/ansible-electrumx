@@ -1,0 +1,15 @@
+---
+- name: download
+  get_url: url=https://codeload.github.com/dashpay/dash/tar.gz/v{{coind_version}} dest=/tmp mode=0440
+- name: extract
+  unarchive: src=/tmp/dash-{{coind_version}}.tar.gz dest=/tmp copy=no
+- name: autogen
+  command: ./autogen.sh chdir=/tmp/dash-{{coind_version}}
+- name: configure
+  command: ./configure --disable-wallet chdir=/tmp/dash-{{coind_version}}
+- name: make
+  command: make -j {{makejob}} chdir=/tmp/dash-{{coind_version}}
+- name: make install
+  command: make install chdir=/tmp/dash-{{coind_version}}
+- name: systemd template setup
+  template: src="templates/coind.service.j2" dest="/etc/systemd/system/{{ coin_name }}.service" owner=root group=root

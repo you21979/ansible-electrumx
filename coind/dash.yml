@@ -1,0 +1,12 @@
+---
+- hosts: all
+  sudo: yes
+  vars:
+    - coin_name: dash
+    - coin_rpcport: 9998
+    - coind_version: 0.12.1.5
+    - makejob: "{{ansible_processor_count}}"
+  roles:
+    - devel
+    - dashd
+
