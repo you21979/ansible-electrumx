@@ -5,8 +5,8 @@
   unarchive: src=/tmp/dash-{{coind_version}}.tar.gz dest=/tmp copy=no
 - name: autogen
   command: ./autogen.sh chdir=/tmp/dash-{{coind_version}}
-- name: configure
-  command: ./configure --disable-wallet chdir=/tmp/dash-{{coind_version}}
+- name: configure with wallet(don't work disable-wallet, this version)
+  command: ./configure chdir=/tmp/dash-{{coind_version}}
 - name: make
   command: make -j {{makejob}} chdir=/tmp/dash-{{coind_version}}
 - name: make install
