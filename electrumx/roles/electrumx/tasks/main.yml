@@ -23,3 +23,5 @@
   command: cp compact_history.py /usr/local/bin chdir=/tmp/electrumx-{{ electrumx_version }}
 - name: electrumx autocompact script
   template: src="templates/electrumx_autocompact.sh.j2" dest="/usr/local/bin/electrumx_autocompact.sh" owner=root group=root mode=0755
+- name: electrumx cron script
+  template: src="templates/electrumx_cron.j2" dest="/etc/cron.daily/electrumx" owner=root group=root mode=0700
