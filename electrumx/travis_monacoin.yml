@@ -22,6 +22,7 @@
     - tcp_port: 4444
     - ssh_port: 4445
     - max_send: 50000000
+    - bandwidth_limit: 2000000000
     - makejob: "{{ansible_processor_count}}"
   tasks:
     - name: create database dir
