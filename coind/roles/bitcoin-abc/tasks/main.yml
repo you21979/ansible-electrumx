@@ -4,12 +4,12 @@
 - name: extract
   unarchive: src=/tmp/bitcoin-abc-{{coind_version}}.tar.gz dest=/tmp copy=no
 - name: autogen
-  command: ./autogen.sh chdir=/tmp/bitcoin-abc-{{coind_version}}
+  command: scl enable devtoolset-7 "./autogen.sh" chdir=/tmp/bitcoin-abc-{{coind_version}}
 - name: configure
-  command: ./configure --disable-wallet --program-transform-name=s/bitcoin/bitcoincash/g chdir=/tmp/bitcoin-abc-{{coind_version}}
+  command: scl enable devtoolset-7 "./configure --disable-wallet --program-transform-name=s/bitcoin/bitcoincash/g" chdir=/tmp/bitcoin-abc-{{coind_version}}
 - name: make
-  command: make -j {{makejob}} chdir=/tmp/bitcoin-abc-{{coind_version}}
+  command: scl enable devtoolset-7 "make -j {{makejob}}" chdir=/tmp/bitcoin-abc-{{coind_version}}
 - name: make install
-  command: make install chdir=/tmp/bitcoin-abc-{{coind_version}}
+  command: scl enable devtoolset-7 "make install" chdir=/tmp/bitcoin-abc-{{coind_version}}
 - name: systemd template setup
   template: src="templates/coind.service.j2" dest="/etc/systemd/system/{{ coin_name }}.service" owner=root group=root

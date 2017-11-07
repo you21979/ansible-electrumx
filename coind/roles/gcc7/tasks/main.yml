@@ -1,0 +1,9 @@
+---
+- name: yum group install
+  yum: name="{{ item }}" state=present
+  with_items:
+    - centos-release-scl
+- name: yum install
+  yum: name="{{ item }}" state=present
+  with_items:
+    - devtoolset-7
