@@ -10,10 +10,12 @@ electrumx setup for centos7
 select coin one
 
 * bitcoin
+* bitcoin
 * bitcoincash
 * litecoin
 * dogecoin
 * monacoin
+* dashcoin
 
 ### remote install
 
