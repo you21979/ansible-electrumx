@@ -3,7 +3,7 @@ Description=Electrum Wallet
 After=syslog.target network.target
 
 [Service]
-ExecStart={{ electrum_bin }} daemon -s {{ electrum_host }} -1
+ExecStart={{ electrum_bin }} daemon 
 WorkingDirectory=/home/centos
 KillMode=process
 Restart=always
