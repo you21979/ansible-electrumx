@@ -1,0 +1,45 @@
+---
+- hosts: all
+  sudo: yes
+  vars:
+    - electrum_version: 2.9.3
+    - electrum_bin: /usr/bin/electron-cash
+    - exec_user: centos
+    - database_dir: /home/centos/.electron-cash
+  tasks:
+    - name: yum install
+      yum: name="{{ item }}" state=present
+      with_items:
+        - "@Development Tools"
+        - python-devel
+        - protobuf
+        - protobuf-devel
+        - protobuf-compiler
+        - protobuf-python
+        - epel-release
+    - name: yum install
+      yum: name="{{ item }}" state=present
+      with_items:
+        - python2-pip
+    - name: pip update
+      command: pip install --upgrade pip
+    - name: pip install
+      pip: name={{ item }}
+      with_items:
+        - certifi
+    - name: download
+      get_url: url=https://codeload.github.com/fyookball/electrum/tar.gz/{{ electrum_version }} dest=/tmp mode=0440
+    - name: extract
+      unarchive: src=/tmp/electrum-{{ electrum_version }}.tar.gz dest=/tmp copy=no
+    - name: protobuf
+      command: protoc --proto_path=lib/ --python_out=lib/ lib/paymentrequest.proto chdir=/tmp/electrum-{{ electrum_version }}
+    - name: install
+      command: python setup.py install chdir=/tmp/electrum-{{ electrum_version }}
+    - name: systemd template setup
+      template: src="templates/electrum-wallet.service.j2" dest="/etc/systemd/system/electrum-wallet.service" owner=root group=root
+    - name: create database dir
+      file: path={{ database_dir }} state=directory owner={{ exec_user }} group={{ exec_user }} mode=0700
+    - name: create wallet dir
+      file: path={{ database_dir }}/wallets state=directory owner={{ exec_user }} group={{ exec_user }} mode=0700
+    - name: config template setup
+      template: src="templates/config.j2" dest="{{ database_dir }}/config" owner={{ exec_user }} group={{ exec_user }}
