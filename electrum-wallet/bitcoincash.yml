@@ -2,7 +2,7 @@
 - hosts: all
   sudo: yes
   vars:
-    - electrum_version: 2.9.3
+    - electrum_version: 2.9.4
     - electrum_bin: /usr/bin/electron-cash
     - exec_user: centos
     - database_dir: /home/centos/.electron-cash
