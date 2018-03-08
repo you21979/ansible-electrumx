@@ -16,6 +16,8 @@
     - zlib-devel
     - bzip2-libs
     - bzip2-devel
+    - lz4
+    - lz4-devel
     - cmake
     - make
 - name: yum install
