@@ -3,6 +3,7 @@ NET = {{ coin_network }}
 DB_DIRECTORY = {{ database_dir }}
 DAEMON_URL = http://{{ coind_user }}:{{ coind_password }}@{{ coind_host }}:{{ coind_port }}/
 DB_ENGINE = rocksdb
+EVENT_LOOP_POLICY = uvloop
 TCP_PORT = {{ tcp_port }}
 SSL_PORT = {{ ssh_port }}
 HOST = 0.0.0.0

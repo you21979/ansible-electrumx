@@ -13,6 +13,10 @@
   with_items:
   - regexp: '^#?\s*elif self.error_count >= 10:'
     line: '            elif self.error_count >= 1000:'
+- name: pip install
+  pip: name={{ item }} executable=pip3.6
+  with_items:
+   - uvloop 
 - name: install
   command: /usr/bin/python3.6 ./setup.py install chdir=/tmp/electrumx-{{ electrumx_version }}
 - name: electrumx systemd setup
