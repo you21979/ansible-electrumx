@@ -30,3 +30,8 @@
   command: scl enable devtoolset-7 "./bootstrap.sh" chdir=/tmp/boost_1_66_0
 - name: b2
   command: scl enable devtoolset-7 "./b2 -j {{makejob}} install --prefix=/usr/local" chdir=/tmp/boost_1_66_0
+- name: script
+  template: src="templates/boost.conf.j2" dest="/etc/ld.so.conf.d/boost.conf" owner=root group=root mode=0700
+- name: ldconfig
+  command: ldconfig
+
