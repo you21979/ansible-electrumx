@@ -1,0 +1,11 @@
+--- ../src/miner.h	2017-12-30 18:31:55.000000000 +0000
++++ ./miner.h	2018-03-09 09:29:44.084040666 +0000
+@@ -71,7 +71,7 @@
+ // TODO: refactor to avoid duplication of this logic.
+ struct CompareModifiedEntry {
+     bool operator()(const CTxMemPoolModifiedEntry &a,
+-                    const CTxMemPoolModifiedEntry &b) {
++                    const CTxMemPoolModifiedEntry &b) const {
+         double f1 = double(b.nSizeWithAncestors *
+                            a.nModFeesWithAncestors.GetSatoshis());
+         double f2 = double(a.nSizeWithAncestors *

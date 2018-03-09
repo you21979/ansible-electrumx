@@ -2,8 +2,31 @@
 - name: yum group install
   yum: name="{{ item }}" state=present
   with_items:
+    - "@Development Tools"
     - centos-release-scl
+    - epel-release
 - name: yum install
   yum: name="{{ item }}" state=present
   with_items:
+    - python-devel
+    - openssl-devel
+    - libevent-devel
+    - libdb-cxx
+    - libdb-cxx-devel
+    - zlib
+    - zlib-devel
+    - bzip2-libs
+    - bzip2-devel
+    - lz4
+    - lz4-devel
+    - cmake
+    - make
     - devtoolset-7
+- name: download
+  get_url: url=https://dl.bintray.com/boostorg/release/1.66.0/source/boost_1_66_0.tar.bz2 dest=/tmp mode=0440
+- name: extract
+  unarchive: src=/tmp/boost_1_66_0.tar.bz2 dest=/tmp copy=no
+- name: bootstrap
+  command: scl enable devtoolset-7 "./bootstrap.sh" chdir=/tmp/boost_1_66_0
+- name: b2
+  command: scl enable devtoolset-7 "./b2 -j {{makejob}} install --prefix=/usr/local" chdir=/tmp/boost_1_66_0

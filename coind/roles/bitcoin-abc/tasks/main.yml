@@ -3,6 +3,10 @@
   get_url: url=https://codeload.github.com/Bitcoin-ABC/bitcoin-abc/tar.gz/v{{coind_version}} dest=/tmp mode=0440
 - name: extract
   unarchive: src=/tmp/bitcoin-abc-{{coind_version}}.tar.gz dest=/tmp copy=no
+- name: patch1
+  patch: src=bitcoin-abc-{{coind_version}}/src/miner.h.patch dest=/tmp/bitcoin-abc-{{coind_version}}/src/miner.h
+- name: patch2
+  patch: src=bitcoin-abc-{{coind_version}}/src/txmempool.h.patch dest=/tmp/bitcoin-abc-{{coind_version}}/src/txmempool.h
 - name: autogen
   command: scl enable devtoolset-7 "./autogen.sh" chdir=/tmp/bitcoin-abc-{{coind_version}}
 - name: configure
