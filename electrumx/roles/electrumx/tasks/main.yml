@@ -3,16 +3,6 @@
   get_url: url=https://codeload.github.com/kyuupichan/electrumx/tar.gz/{{ electrumx_version }} dest=/tmp mode=0440
 - name: extract
   unarchive: src=/tmp/electrumx-{{ electrumx_version }}.tar.gz dest=/tmp copy=no
-- name: "JSONRPC error counter"
-  lineinfile: >-
-    dest='/tmp/electrumx-{{ electrumx_version }}/lib/jsonrpc.py'
-    state=present
-    backrefs=yes
-    regexp='{{ item.regexp }}'
-    line='{{ item.line }}'
-  with_items:
-  - regexp: '^#?\s*elif self.error_count >= 10:'
-    line: '            elif self.error_count >= 1000:'
 - name: pip install
   pip: name={{ item }} executable=pip3.6
   with_items:

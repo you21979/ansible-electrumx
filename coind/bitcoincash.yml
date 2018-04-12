@@ -4,7 +4,7 @@
   vars:
     - coin_name: bitcoincash
     - coin_rpcport: 7332
-    - coind_version: 0.16.2
+    - coind_version: 0.17.0
     - makejob: "{{ansible_processor_count}}"
   roles:
     - gcc7
