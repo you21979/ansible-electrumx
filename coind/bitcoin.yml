@@ -4,7 +4,7 @@
   vars:
     - coin_name: bitcoin
     - coin_rpcport: 8332
-    - coind_version: 0.16.0
+    - coind_version: 0.16.3
     - makejob: "{{ansible_processor_count}}"
   roles:
     - devel
