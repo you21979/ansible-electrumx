@@ -2,10 +2,10 @@
 - hosts: all
   sudo: yes
   vars:
-    - coin_name: bitcoincash
+    - coin_name: bitcoinsv
     - coin_rpcport: 7332
-    - coind_version: 0.18.2
+    - coind_version: 0.1.0
     - makejob: "{{ansible_processor_count}}"
   roles:
     - gcc7
-    - bitcoin-abc
+    - bitcoin-sv
