@@ -5,10 +5,10 @@
     - python3
     - devel
     - rockdb5
-    - electrumx
+    - electrumx-cash
     - sslgen
   vars:
-    - electrumx_version: 1.4.3
+    - electrumx_version: 1.8.10AOR
     - coin_name: BitcoinCash
     - coin_network: mainnet
     - coind_host: localhost
