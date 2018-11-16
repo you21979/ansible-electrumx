@@ -10,7 +10,7 @@
 - name: install
   command: /usr/bin/python3.6 ./setup.py install chdir=/tmp/electrumx-{{ electrumx_version }}
 - name: electrumx systemd setup
-  template: src="templates/electrumx.service.j2" dest="/etc/systemd/system/electrumx.service" owner=root group=root
+  template: src="templates/electrumx_oldver.service.j2" dest="/etc/systemd/system/electrumx.service" owner=root group=root
 - name: electrumx template setup
   template: src="templates/electrumx.conf.j2" dest="/etc/electrumx.conf" owner=root group=root
 - name: electrumx copy script
