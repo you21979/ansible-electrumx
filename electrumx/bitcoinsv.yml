@@ -1,0 +1,28 @@
+---
+- hosts: all
+  sudo: yes
+  roles:
+    - python3
+    - devel
+    - rockdb5
+    - electrumx
+    - sslgen
+  vars:
+    - electrumx_version: 1.4.3
+    - coin_name: BitcoinCash
+    - coin_network: mainnet
+    - coind_host: localhost
+    - coind_port: 8332
+    - coind_user: bitcoin
+    - coind_password: bitcoin123
+    - exec_user: centos
+    - database_dir: /home/centos/DB
+    - tcp_port: 50001
+    - ssh_port: 50002
+    - max_send: 50000000
+    - bandwidth_limit: 2000000000
+    - makejob: "{{ansible_processor_count}}"
+  tasks:
+    - name: create database dir
+      file: path={{ database_dir }} state=directory owner={{ exec_user }} group={{ exec_user }} mode=0755
+      
