@@ -13,6 +13,7 @@
   roles:
     - devel
     - python3
+    - electrum-ltc
     - electrum-wallet
   tasks:
     - name: systemd template setup

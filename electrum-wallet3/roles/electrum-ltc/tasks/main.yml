@@ -1,0 +1,10 @@
+---
+- name: gcc
+  yum: name={{ item }}
+  with_items:
+    - gcc
+    - openssl-devel
+- name: additional pip install
+  pip: name={{ item }} executable=pip3.6
+  with_items:
+    - scrypt
