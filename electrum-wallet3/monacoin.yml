@@ -2,12 +2,12 @@
 - hosts: all
   sudo: yes
   vars:
-    - electrum_version: 3.3.2
-    - electrum_bin: /usr/bin/electron-cash
+    - electrum_version: 3.2.3.1
+    - electrum_bin: /usr/bin/electrum-mona
     - exec_user: centos
-    - database_dir: /home/centos/.electron-cash
-    - electrum_name: Electron-Cash
-    - download_url: https://codeload.github.com/{{ electrum_name }}/{{ electrum_name }}/tar.gz/{{ electrum_version }} 
+    - database_dir: /home/centos/.electrum-mona
+    - electrum_name: electrum-mona
+    - download_url: https://codeload.github.com/wakiyamap/{{ electrum_name }}/tar.gz/{{ electrum_version }} 
     - archive_file: /tmp/{{ electrum_name }}-{{ electrum_version }}.tar.gz
     - work_dir: /tmp/{{ electrum_name }}-{{ electrum_version }}
   roles:
