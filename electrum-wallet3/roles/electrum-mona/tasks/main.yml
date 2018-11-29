@@ -1,0 +1,15 @@
+---
+- name: additional pip install
+  pip: name={{ item }} executable=pip3.6
+  with_items:
+    - https://github.com/metalicjames/lyra2re-hash-python/archive/master.zip
+    - pyaes
+    - ecdsa
+    - requests
+    - qrcode
+    - dnspython
+    - jsonrpclib-pelix
+    - PySocks
+    - qdarkstyle
+    - typing
+    - protobuf
