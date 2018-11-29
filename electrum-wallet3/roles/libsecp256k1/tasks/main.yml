@@ -1,0 +1,11 @@
+---
+- name: git clone
+  git: repo=https://github.com/bitcoin-core/secp256k1.git dest=/tmp/secp256k1
+- name: autogen
+  command: ./autogen.sh chdir=/tmp/secp256k1
+- name: configure
+  command: ./configure --prefix=/usr -libdir=/usr/lib64 chdir=/tmp/secp256k1
+- name: make
+  command: make chdir=/tmp/secp256k1
+- name: make install
+  command: make install chdir=/tmp/secp256k1

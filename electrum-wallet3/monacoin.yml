@@ -13,6 +13,7 @@
   roles:
     - devel
     - python3
+    - libsecp256k1
     - electrum-mona
     - electrum-wallet
   tasks:
