@@ -1,0 +1,21 @@
+---
+- hosts: all
+  sudo: yes
+  vars:
+    - electrum_version: 3.3.2
+    - electrum_bin: /usr/bin/electron-cash
+    - exec_user: centos
+    - database_dir: /home/centos/.electron-cash
+  roles:
+    - devel
+    - python3
+    - electron-cash
+  tasks:
+    - name: systemd template setup
+      template: src="templates/electrum-wallet.service.j2" dest="/etc/systemd/system/electrum-wallet.service" owner=root group=root
+    - name: create database dir
+      file: path={{ database_dir }} state=directory owner={{ exec_user }} group={{ exec_user }} mode=0700
+    - name: create wallet dir
+      file: path={{ database_dir }}/wallets state=directory owner={{ exec_user }} group={{ exec_user }} mode=0700
+    - name: config template setup
+      template: src="templates/config.j2" dest="{{ database_dir }}/config" owner={{ exec_user }} group={{ exec_user }}

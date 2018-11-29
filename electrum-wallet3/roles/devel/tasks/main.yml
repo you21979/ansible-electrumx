@@ -1,0 +1,9 @@
+---
+- name: yum add repo
+  yum: name="{{ item }}" state=present
+  with_items:
+    - "epel-release"
+- name: yum group install
+  yum: name="{{ item }}" state=present
+  with_items:
+    - "@Development Tools"

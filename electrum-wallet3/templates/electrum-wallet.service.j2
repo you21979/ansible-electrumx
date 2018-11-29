@@ -1,0 +1,16 @@
+[Unit]
+Description=Electrum Wallet
+After=syslog.target network.target
+
+[Service]
+ExecStart={{ electrum_bin }} daemon 
+WorkingDirectory=/home/centos
+KillMode=process
+Restart=always
+User={{ exec_user }}
+Group={{ exec_user }}
+TimeoutStopSec=30min
+
+[Install]
+WantedBy=multi-user.target
+

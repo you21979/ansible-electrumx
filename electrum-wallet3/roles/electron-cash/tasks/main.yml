@@ -1,0 +1,13 @@
+---
+- name: pip install
+  pip: name={{ item }} executable=pip3.6
+  with_items:
+    - protobuf3
+- name: download
+  get_url: url=https://codeload.github.com/Electron-Cash/Electron-Cash/tar.gz/{{ electrum_version }} dest=/tmp mode=0440
+- name: extract
+  unarchive: src=/tmp/Electron-Cash-{{ electrum_version }}.tar.gz dest=/tmp copy=no
+- name: protobuf
+  command: protoc-gen-python3 --proto_path=lib/ --python_out=lib/ lib/paymentrequest.proto chdir=/tmp/Electron-Cash-{{ electrum_version }}
+- name: install
+  command: /usr/bin/python3.6 setup.py install chdir=/tmp/Electron-Cash-{{ electrum_version }}
