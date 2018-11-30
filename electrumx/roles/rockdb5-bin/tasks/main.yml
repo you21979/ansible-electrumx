@@ -1,0 +1,12 @@
+---
+- name: bin download
+  get_url: url=https://github.com/you21979/ansible-electrumx/releases/download/v0.0.5/rocksdb_5.10.4.tar.gz dest=/tmp mode=0440
+- name: extract
+  unarchive: src=/tmp/rocksdb_5.10.4.tar.gz dest=/ copy=no
+- name: pip install
+  pip: name={{ item }} executable=pip3.6
+  with_items:
+   - python-rocksdb
+   - plyvel
+- name: ldconfig
+  command: /usr/sbin/ldconfig
