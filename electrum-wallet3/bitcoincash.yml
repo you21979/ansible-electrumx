@@ -3,7 +3,7 @@
   sudo: yes
   vars:
     - electrum_name: Electron-Cash
-    - electrum_version: 3.3.2
+    - electrum_version: 3.3.6
     - electrum_bin: /usr/bin/electron-cash
     - exec_user: centos
     - database_dir: /home/centos/.electron-cash
