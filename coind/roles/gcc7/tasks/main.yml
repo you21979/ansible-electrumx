@@ -22,6 +22,11 @@
     - cmake
     - make
     - devtoolset-7
+- name: yum remove
+  yum: name="{{ item }}" state=absent
+  with_items:
+    - boost
+    - boost-devel
 - name: download
   get_url: url=https://dl.bintray.com/boostorg/release/1.66.0/source/boost_1_66_0.tar.bz2 dest=/tmp mode=0440
 - name: extract
